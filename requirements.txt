@@ -1,5 +1,8 @@
 uwsgi
 uwsgitop
+werkzeug
 Flask
 Flask-RESTful
+Flask-JWT
 Flask-SQLAlchemy
+psycopg2
