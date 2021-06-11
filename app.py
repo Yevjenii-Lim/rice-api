@@ -5,7 +5,6 @@ import datetime
 import os
 import sqlite3
 
-from db import db
 
 app = Flask(__name__)
 
@@ -21,10 +20,7 @@ api.add_resource(ItemsAll, "/all")
 
 
 
+
 if __name__ == "__main__":
     db.init_app(app)
-
-
-
-
-app.run(port="5000", debug=True)
+    app.run(port="5000", debug=True)
