@@ -4,5 +4,6 @@ werkzeug
 Flask
 Flask-RESTful
 Flask-JWT
+Flask-CORS
 Flask-SQLAlchemy
 psycopg2
