@@ -1,10 +1,14 @@
 import sqlite3
 from db import db
+with open("./img/3d.jpg", "rb") as f:
+    m=f.read()
+    print(len(m))
+
 connection = sqlite3.connect("data.db")
 
 cursor = connection.cursor()
 
-create_items_table = "CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, title text, price real, desc text, type text)"
+create_items_table = "CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, title text, price real, desc text, type text, img text)"
 
 
 cursor.execute(create_items_table)
@@ -82,9 +86,12 @@ def add_all():
             },
         ]
 
-    query = "INSERT or REPLACE into items VALUES(?, ?, ?, ?,?)"
+    query = "INSERT or REPLACE into items VALUES(?, ?, ?, ?, ?, ?)"
+
+
+
     for item in cart:
-        cursor.execute(query, (item["id"],item["title"], item["price"], item["desc"], item["type"]))
+        cursor.execute(query, (item["id"],item["title"], item["price"], item["desc"], item["type"], "https://ibb.co/h978JZ9"))
 
     connection.commit()
     connection.close()

@@ -26,12 +26,14 @@ class ItemModel(db.Model):
     price = db.Column(db.Float(precision=2))
     desc = db.Column(db.String(300))
     type = db.Column(db.String(80))
+    img = db.Column(db.String())
 
-    def __init__(self, title, price, desc, type):
+    def __init__(self, title, price, desc, type, img):
         self.title = title
         self.price = price
         self.desc = desc
         self.type = type
+        self.img = img
 
     @classmethod
     def get_all_items(cls):
@@ -42,4 +44,4 @@ class ItemModel(db.Model):
         db.session.commit()
 
     def json(self):
-        return {"id": self.id, "title": self.title, "price": self.price, "desc": self.desc, "type": self.type}
+        return {"id": self.id, "title": self.title, "price": self.price, "desc": self.desc, "type": self.type, "img": self.img }
