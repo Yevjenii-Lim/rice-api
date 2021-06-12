@@ -16,7 +16,7 @@ class Items(Resource):
         if len(items) == 0:
             return {"message": "no items in storage"}
 
-        return {"all items": [ item.json() for item in items]}
+        return {"all_items": [ item.json() for item in items]}
 
     def post(self):
         request_data = Items.parser.parse_args()
