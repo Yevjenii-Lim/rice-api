@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 from resource.Items import Items, ItemsAll
+from resource.Item import Item
 import datetime
 import os
 import sqlite3
@@ -21,6 +22,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 api.add_resource(Items, "/")
 api.add_resource(ItemsAll, "/all")
+api.add_resource(Item, "/item/<int:id>")
 
 # @app.before_first_request #delet this block before posting to heroku
 # def create_tables():

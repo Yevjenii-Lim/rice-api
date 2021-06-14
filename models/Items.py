@@ -4,20 +4,6 @@ from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
 from db import db
 
-cart = [
-    {
-      "title": "Калифорния в кунжуте с крабом ",
-      "price": 92,
-      "desc": "Нежный сыр, огурец с мясом нежного краба...",
-      "id": 1
-    },
-    {
-       "title": "Дакота",
-       "price": 145,
-       "desc": "Лосось, уsгорь, креветка, авокадо, яп майонез, икра тобико, икра лососьВес: 265 грамм.",
-       "id": 2
-    }
-]
 
 class ItemModel(db.Model):
     __tablename__ = "items"
@@ -38,6 +24,11 @@ class ItemModel(db.Model):
     @classmethod
     def get_all_items(cls):
         return cls.query.all()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
+
 
     def save_to_db(self):
         db.session.add(self)
